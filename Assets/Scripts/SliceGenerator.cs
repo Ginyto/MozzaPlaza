@@ -19,14 +19,13 @@ public class SliceGenerator : MonoBehaviour
 
     }
 
-    public void OnCollisionEnter(Collision other)
+    public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Slice Generator Collided with " + other.gameObject.name);
+        Debug.Log(gameObject.name + " with " + other.gameObject.name);
 
         if (other.gameObject.name == "Peel")
         {
             GameObject slice = Instantiate(slicePrefab, GrabPosition.position, Quaternion.identity);
-            slice.transform.parent = GrabPosition;
         }
     }
 }
