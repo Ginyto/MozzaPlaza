@@ -19,7 +19,6 @@ public class SelectedObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Select();
     }
 
     public void Select()
@@ -41,6 +40,28 @@ public class SelectedObject : MonoBehaviour
                 Debug.Log("material length: " + gameObject.GetComponent<Renderer>().materials.Length);
                 gameObject.GetComponent<Renderer>().materials = new Material[] { gameObject.GetComponent<Renderer>().materials[0] };
             }
+        }
+    }
+
+
+    public void OnTriggerEnter(Collider other)
+    {
+        GameObject target = other.gameObject;
+
+        if (target.GetComponent<Renderer>().materials.Length == 1)
+        {
+            target.GetComponent<Renderer>().AddMaterial(OutlineRenderer);
+        }
+
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        GameObject target = other.gameObject;
+
+        if (target.GetComponent<Renderer>().materials.Length > 1)
+        {
+            target.GetComponent<Renderer>().materials = new Material[] { target.GetComponent<Renderer>().materials[0] };
         }
     }
 }
