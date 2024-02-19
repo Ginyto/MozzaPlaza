@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using JetBrains.Annotations;
-using Unity.VisualScripting;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 
@@ -23,12 +19,13 @@ public class SelectedObject : MonoBehaviour
     {
         GameObject target = other.gameObject;
 
-        if (target.GetComponent<Renderer>().materials.Length == 1)
+        if (target.GetComponent<Renderer>().materials.Length == 1 && target.name != "Plane" && target.name != "Table" && target.name != "Peel")
         {
             target.GetComponent<Renderer>().AddMaterial(OutlineRenderer);
         }
 
     }
+
 
     public void OnTriggerExit(Collider other)
     {
