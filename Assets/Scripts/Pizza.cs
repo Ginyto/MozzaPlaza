@@ -16,28 +16,24 @@ public class Pizza : MonoBehaviour
         
     }
 
-    void OnCollisionStay(Collision other)
+    public void OnTriggerEnter(Collider other)
     {
         IngredientAdded(other);
     }
 
-    public void IngredientAdded(Collision other)
+    public void IngredientAdded(Collider ingredient)
     {
-        GameObject ingredient = other.gameObject;
-
-        if (ingredient.name != "Table"){
+        if (ingredient.gameObject.name != "Table"){
 
             Debug.Log(ingredient.name + " is on the pizza!");
 
-            if (ingredient.CompareTag("Ingredient"))
-            {
-                Rigidbody rb = ingredient.GetComponent<Rigidbody>();
+            if(ingredient.gameObject.CompareTag("Ingredient")){
 
-                rb.useGravity = false;
+                Rigidbody rb = ingredient.gameObject.GetComponent<Rigidbody>();
+
                 rb.isKinematic = true;
 
-                ingredient.transform.parent = gameObject.transform;
-
+                ingredient.gameObject.transform.parent = gameObject.transform;
             }
         }
 
