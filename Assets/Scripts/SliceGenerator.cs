@@ -21,9 +21,12 @@ public class SliceGenerator : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log(gameObject.name + " with " + other.gameObject.name);
-
-        if (other.gameObject.name == "Peel")
+        if (other.gameObject.name != "Table")
+        {
+            Debug.Log(gameObject.name + " with " + other.gameObject.name);
+        }
+        
+        else if (other.gameObject.name == "Peel")
         {
             GameObject slice = Instantiate(slicePrefab, GrabPosition.position, Quaternion.identity);
         }
