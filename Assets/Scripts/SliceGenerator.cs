@@ -25,9 +25,10 @@ public class SliceGenerator : MonoBehaviour
         {
             Debug.Log(gameObject.name + " with " + other.gameObject.name);
         }
-        
-        else if (other.gameObject.name == "Peel")
+
+        if (other.gameObject.name == "Peel")
         {
+            Debug.Log("Generating Slice");
             GameObject slice = Instantiate(slicePrefab, GrabPosition.position, Quaternion.identity);
         }
     }
