@@ -28,8 +28,9 @@ public class SliceGenerator : MonoBehaviour
 
         if (other.gameObject.name == "Peel")
         {
-            Debug.Log("Generating Slice");
+            // Debug.Log("Generating Slice");
             GameObject slice = Instantiate(slicePrefab, GrabPosition.position, Quaternion.identity);
+            slice.transform.parent = gameObject.transform;
         }
     }
 }
