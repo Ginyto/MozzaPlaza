@@ -31,7 +31,7 @@ public class Pizza : MonoBehaviour
 
                 Rigidbody rb = ingredient.gameObject.GetComponent<Rigidbody>();
 
-                rb.isKinematic = true;
+                Destroy(rb);
 
                 ingredient.gameObject.transform.parent = gameObject.transform;
             }
