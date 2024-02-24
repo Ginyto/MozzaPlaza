@@ -28,6 +28,7 @@ public class Oven : MonoBehaviour
             isCooking = true;
 
             other.gameObject.transform.position = GrabPosition.position;
+            other.gameObject.transform.rotation = GrabPosition.rotation;
             other.gameObject.transform.parent = GrabPosition;
         }
     }

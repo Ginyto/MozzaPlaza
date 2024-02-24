@@ -5,7 +5,7 @@ using UnityEngine;
 public class PizzaPeel : MonoBehaviour
 {
     public Transform GrabPosition;
-    public bool isGrabbed;
+    public bool isGrabbable = true;
 
     // Start is called before the first frame update
     void Start()
@@ -23,12 +23,34 @@ public class PizzaPeel : MonoBehaviour
     {
         Debug.Log("Peel Collided with " + other.gameObject.name);
 
-        if (other.gameObject.name == "Pizza")
+        if (other.gameObject.CompareTag("Pizza") && isGrabbable)
         {
-            isGrabbed = true;
-            other.gameObject.transform.position = GrabPosition.position;
+            other.gameObject.transform.SetPositionAndRotation(
+                GrabPosition.position,
+                new(
+                    other.gameObject.transform.rotation.x,
+                    other.gameObject.transform.rotation.y,
+                    GrabPosition.rotation.z,
+                    Quaternion.identity.w
+                ));
+
+            AttachIngredients ingScript = other.gameObject.GetComponent<AttachIngredients>();
+            ingScript.enabled = false;
 
             other.gameObject.transform.parent = GrabPosition;
+
+            if (other.gameObject.CompareTag("Four"))
+            {
+                isGrabbable = false;
+            }
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Four"))
+        {
+            isGrabbable = true;
         }
     }
 }

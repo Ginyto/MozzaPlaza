@@ -4,22 +4,39 @@ using UnityEngine;
 
 public class SliceGenerator : MonoBehaviour
 {
-    public GameObject slicePrefab;
-    public Transform GrabPosition;
+    [SerializeField] private GameObject slicePrefab;
+    [SerializeField] private int nbObjets;
+    [SerializeField] private Transform spawnPoint1;
+    [SerializeField] private Transform spawnPoint2;
+    [SerializeField] private Transform spawnPoint3;
+    private Transform[] spawnList;
 
-    // Start is called before the first frame update
+    public Transform RandomSpawn()
+    {
+        int index = Random.Range(1, spawnList.Length) - 1;
+        return spawnList[index];
+    }
+
+
     void Start()
     {
-
+        nbObjets += transform.childCount;
+        spawnList = new Transform[] { spawnPoint1, spawnPoint2, spawnPoint3 };
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (transform.childCount <= nbObjets)
+        {
+            while (transform.childCount != nbObjets)
+            {
+                Instantiate(slicePrefab, RandomSpawn().position, Quaternion.identity, transform);
+            }
+        }
     }
 
-    public void OnTriggerEnter(Collider other)
+/*    public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name != "Table")
         {
@@ -32,5 +49,5 @@ public class SliceGenerator : MonoBehaviour
             GameObject slice = Instantiate(slicePrefab, GrabPosition.position, Quaternion.identity);
             slice.transform.parent = gameObject.transform;
         }
-    }
+    }*/
 }
