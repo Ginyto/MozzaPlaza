@@ -23,7 +23,8 @@ public class AttachIngredients : MonoBehaviour
                 
 
                 XRGrabInteractable grabScript = ingredient.gameObject.GetComponent<XRGrabInteractable>();
-                grabScript.enabled = false;
+
+                // grabScript.enabled = false;
 
                 Destroy(rb);
 
