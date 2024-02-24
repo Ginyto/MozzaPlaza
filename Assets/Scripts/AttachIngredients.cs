@@ -20,10 +20,12 @@ public class AttachIngredients : MonoBehaviour
             {
 
                 Rigidbody rb = ingredient.gameObject.GetComponent<Rigidbody>();
-                Destroy(rb);
+                
 
                 XRGrabInteractable grabScript = ingredient.gameObject.GetComponent<XRGrabInteractable>();
                 grabScript.enabled = false;
+
+                Destroy(rb);
 
                 ingredient.gameObject.transform.parent = gameObject.transform;
             }
