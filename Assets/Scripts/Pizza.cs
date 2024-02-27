@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Pizza : MonoBehaviour
@@ -9,6 +10,8 @@ public class Pizza : MonoBehaviour
     public List<GameObject> ingredients = new List<GameObject>();
     public List<GameObject> recipe = new List<GameObject>();
     public bool isMatch = false;
+    public int cookingTime = 0;
+    private bool done = false;
 
 
     // Start is called before the first frame update
@@ -41,6 +44,7 @@ public class Pizza : MonoBehaviour
                     if (ingredient.name.Contains(name))
                     {
                         ingredient.name = name;
+                        cookingTime += (int)(ingredient.transform.localScale.x) / 2;
                     }
                 }
             }
@@ -58,7 +62,7 @@ public class Pizza : MonoBehaviour
 
     public void IsMatch()
     {
-        if (ingredients.Count == recipe.Count)
+        if (ingredients.Count == recipe.Count && !done)
         {
             SortPizza();
 
@@ -81,10 +85,9 @@ public class Pizza : MonoBehaviour
             {
                 Debug.Log("No Match ingredients are different from recipe");
             }
-        }
-        else
-        {
-            Debug.Log("No Match ingredients count is different from recipe count");
+
+            cookingTime /= 2;
+            done = true;
         }
     }
 }

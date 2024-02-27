@@ -9,6 +9,8 @@ public class Recipe : MonoBehaviour
     public List<GameObject> Oriental = new List<GameObject>();
     public List<GameObject> Reine = new List<GameObject>();
     public List<GameObject[]> Recipes = new List<GameObject[]>();
+    public List<GameObject> RecipeImagesHolder = new List<GameObject>();
+    public List<Sprite> RecipeImages = new List<Sprite>();
 
     public GameObject PizzaPrefab;
     public Transform PizzaSpawn;
@@ -18,7 +20,16 @@ public class Recipe : MonoBehaviour
     void Start()
     {
         IntitialiseRecipes();
+
         Order();
+        Order();
+        Order();
+        Order();
+        Order();
+        Order();
+        Order();
+        Order();
+
     }
 
     // Update is called once per frame
@@ -38,8 +49,22 @@ public class Recipe : MonoBehaviour
     public List<GameObject> SelectRandomRecipe()
     {
         int random = Random.Range(0, Recipes.Count);
+        ScreenOrder(random);
         return new List<GameObject>(Recipes[random]);
     }
+
+    public void ScreenOrder(int index)
+    {
+        foreach (GameObject image in RecipeImagesHolder)
+        {
+            if(image.GetComponent<SpriteRenderer>().sprite == null)
+            {
+                image.GetComponent<SpriteRenderer>().sprite = RecipeImages[index];
+                break;
+            }
+        }
+    }
+
 
     public void Order()
     {
