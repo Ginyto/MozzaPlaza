@@ -6,6 +6,10 @@ using UnityEngine.XR.Interaction.Toolkit.Transformers;
 
 public class AttachIngredients : MonoBehaviour
 {
+    public void Start()
+    {
+        
+    }
     public void OnTriggerEnter(Collider other)
     {
         IngredientAdded(other);
@@ -32,6 +36,8 @@ public class AttachIngredients : MonoBehaviour
                 Destroy(rb);
 
                 ingredient.gameObject.transform.parent = gameObject.transform;
+
+                GetComponent<Pizza>().IngredientsOnPizza(ingredient.gameObject);
             }
         }
 
