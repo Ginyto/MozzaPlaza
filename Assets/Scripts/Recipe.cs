@@ -8,6 +8,10 @@ public class Recipe : MonoBehaviour
     public List<GameObject> Hawaienne = new List<GameObject>();
     public List<GameObject> Oriental = new List<GameObject>();
     public List<GameObject> Reine = new List<GameObject>();
+    public List<GameObject> Vegetal = new List<GameObject>();
+    public List<GameObject> Carnivore = new List<GameObject>();
+    public List<GameObject> Royal = new List<GameObject>();
+
     public List<GameObject[]> Recipes = new List<GameObject[]>();
     public List<GameObject> RecipeImagesHolder = new List<GameObject>();
     public List<Sprite> RecipeImages = new List<Sprite>();
@@ -44,6 +48,10 @@ public class Recipe : MonoBehaviour
         Recipes.Add(Hawaienne.ToArray());
         Recipes.Add(Oriental.ToArray());
         Recipes.Add(Reine.ToArray());
+        Recipes.Add(Vegetal.ToArray());
+        Recipes.Add(Carnivore.ToArray());
+        Recipes.Add(Royal.ToArray());
+
     }
 
     public List<GameObject> SelectRandomRecipe()
