@@ -20,6 +20,7 @@ public class Recipe : MonoBehaviour
     public Transform PizzaSpawn;
     public GameObject Prepa;
     public int PizzaIndex = 0;
+    public int pizzacount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -79,7 +80,9 @@ public class Recipe : MonoBehaviour
 
         pizza.name = "Pizza " + RecipeImages[PizzaIndex].name;
 
-        pizza.GetComponent<Pizza>().Index = PizzaIndex;
+        pizza.GetComponent<Pizza>().Index = pizzacount;
+
+        pizzacount++;
 
         pizza.transform.SetParent(Prepa.transform);
 

@@ -41,6 +41,16 @@ public class Oven : MonoBehaviour
         }
     }
 
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Pizza"))
+        {
+            isCooking = false;
+            StopCoroutine(Cooking(Pizza.GetComponent<Pizza>().cookingTime));
+            Debug.Log("Pizza sortie du four");
+        }
+    }
+
     IEnumerator Cooking(int time)
     {
         Pizza.GetComponent<Pizza>().unCooked = true;
