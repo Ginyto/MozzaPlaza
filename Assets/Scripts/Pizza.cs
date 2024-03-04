@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Pizza : MonoBehaviour
 {
-    [SerializeField] private bool unCooked = false;
-    [SerializeField] private bool cooked = false;
-    [SerializeField] private bool overCooked = false;
+    public bool unCooked = false;
+    public bool cooked = false;
+    public bool overCooked = false;
     public List<GameObject> ingredients = new List<GameObject>();
     public List<GameObject> recipe = new List<GameObject>();
     public bool isMatch = false;
@@ -90,7 +90,7 @@ public class Pizza : MonoBehaviour
             }
 
             cookingTime /= 2;
-            // done = true;
+            done = true;
         }
     }
 }

@@ -5430,7 +5430,7 @@ MonoBehaviour:
   m_OriginBaseGameObject: {fileID: 223974226}
   m_CameraFloorOffsetObject: {fileID: 1828601335}
   m_RequestedTrackingOriginMode: 1
-  m_CameraYOffset: 1.5
+  m_CameraYOffset: 1.2
 --- !u!4 &223974229
 Transform:
   m_ObjectHideFlags: 0
@@ -29761,16 +29761,17 @@ MonoBehaviour:
   - {fileID: 118755395}
   - {fileID: 1205429339}
   RecipeImages:
-  - {fileID: 21300000, guid: 14da6dc0710314ee8bd695f62cf33578, type: 3}
-  - {fileID: 21300000, guid: ed472dc73faf744f993179d4585ae7f4, type: 3}
   - {fileID: 21300000, guid: a937fa5217bdf4a85bf883c23c186ce4, type: 3}
+  - {fileID: 21300000, guid: ed472dc73faf744f993179d4585ae7f4, type: 3}
   - {fileID: 21300000, guid: c960e237573c54d0881e261c7c4d4827, type: 3}
   - {fileID: 21300000, guid: 63d08fac7a1e24fd9b8c000b90b0e8a6, type: 3}
-  - {fileID: 21300000, guid: 20cf32d49666b4450b2d84f5b055ba41, type: 3}
   - {fileID: 21300000, guid: 4a625b4d4a5624e95b3fd271e444fb85, type: 3}
+  - {fileID: 21300000, guid: 14da6dc0710314ee8bd695f62cf33578, type: 3}
+  - {fileID: 21300000, guid: 20cf32d49666b4450b2d84f5b055ba41, type: 3}
   PizzaPrefab: {fileID: 464038537847145341, guid: 52bf2cbc368b0481f96bec2ea191e6e7, type: 3}
   PizzaSpawn: {fileID: 2013143547}
   Prepa: {fileID: 1540282961}
+  PizzaIndex: 0
 --- !u!1001 &1371645643
 PrefabInstance:
   m_ObjectHideFlags: 0
