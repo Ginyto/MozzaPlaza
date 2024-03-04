@@ -6,7 +6,7 @@ public class PizzaPeel : MonoBehaviour
 {
     public Transform GrabPosition;
     public bool isPizzaOn = false;
-    public bool hasPizzaLeftOven = false;
+    public bool hasPizzaLeft = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,7 @@ public class PizzaPeel : MonoBehaviour
     {
         /*Debug.Log("Peel Collided with " + other.gameObject.name);*/
 
-        if (other.gameObject.CompareTag("Four") && !isPizzaOn) hasPizzaLeftOven = true;
+        if (other.gameObject.CompareTag("Four") && !isPizzaOn) hasPizzaLeft = true;
         if (other.gameObject.CompareTag("Pizza") && !isPizzaOn)
         {
             other.gameObject.transform.SetPositionAndRotation(
@@ -54,7 +54,7 @@ public class PizzaPeel : MonoBehaviour
     private IEnumerator ChangeLeftOven(bool value)
     {
         yield return new WaitForSeconds(0.5f);
-        hasPizzaLeftOven = value;
+        hasPizzaLeft = value;
     }
 
     private bool IsPizzaGosse()

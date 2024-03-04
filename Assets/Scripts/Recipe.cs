@@ -19,7 +19,7 @@ public class Recipe : MonoBehaviour
     public GameObject PizzaPrefab;
     public Transform PizzaSpawn;
     public GameObject Prepa;
-    public int PizzaIndex;
+    public int PizzaIndex = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -50,9 +50,10 @@ public class Recipe : MonoBehaviour
 
     public List<GameObject> SelectRandomRecipe()
     {
-        PizzaIndex = Random.Range(0, Recipes.Count);
+
+        PizzaIndex = Random.Range(0, Recipes.Count-1);
         ScreenOrder();
-        // Debug.Log("PizzaIndex Recipe : " + PizzaIndex);
+
         return new List<GameObject>(Recipes[PizzaIndex]);
     }
 

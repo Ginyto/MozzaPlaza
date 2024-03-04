@@ -27,7 +27,7 @@ public class Oven : MonoBehaviour
     {
         /*Debug.Log("Oven Collided with " + other.gameObject.name);*/
 
-        if (other.gameObject.CompareTag("Pizza") && !pizzaPeel.hasPizzaLeftOven)
+        if (other.gameObject.CompareTag("Pizza") && !pizzaPeel.hasPizzaLeft)
         {
             Pizza = other.gameObject;
             isCooking = true;
