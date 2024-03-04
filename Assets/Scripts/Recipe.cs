@@ -26,13 +26,6 @@ public class Recipe : MonoBehaviour
         IntitialiseRecipes();
 
         Order();
-        Order();
-        Order();
-        Order();
-        Order();
-        Order();
-        Order();
-        Order();
 
     }
 
