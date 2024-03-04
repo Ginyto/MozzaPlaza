@@ -79,6 +79,8 @@ public class Recipe : MonoBehaviour
 
         pizza.name = "Pizza " + RecipeImages[PizzaIndex].name;
 
+        pizza.GetComponent<Pizza>().Index = PizzaIndex;
+
         pizza.transform.SetParent(Prepa.transform);
 
     }

@@ -33,6 +33,12 @@ public class DeliveryManager : MonoBehaviour
             Pizza.transform.SetPositionAndRotation(GrabPosition.position, GrabPosition.rotation);
             Pizza.transform.parent = GrabPosition;
 
+            RecipeManager.RecipeImagesHolder[Pizza.GetComponent<Pizza>().Index].SetActive(false);
+
+            Destroy(Pizza);
+
+            RecipeManager.Order();
+
         }
     }
 }

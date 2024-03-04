@@ -43,7 +43,7 @@ public class PizzaPeel : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Four"))
+        if (other.gameObject.CompareTag("Four") || other.gameObject.CompareTag("BasPizza") || other.gameObject.CompareTag("SurPlace"))
         {
             isPizzaOn = IsPizzaGosse();
             Debug.Log(isPizzaOn);

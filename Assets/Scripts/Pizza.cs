@@ -13,6 +13,7 @@ public class Pizza : MonoBehaviour
     public int cookingTime = 0;
     private bool done = false;
     public GameObject PizzaIndicator;
+    public int Index = 0;
 
 
     // Start is called before the first frame update
