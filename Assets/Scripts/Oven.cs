@@ -9,6 +9,8 @@ public class Oven : MonoBehaviour
     [SerializeField] private PizzaPeel pizzaPeel;
     public GameObject Led;
 
+    private Coroutine Lethimcook;
+
     public GameObject Pizza;
 
     // Start is called before the first frame update
@@ -35,7 +37,12 @@ public class Oven : MonoBehaviour
             Pizza.transform.SetPositionAndRotation(GrabPosition.position, GrabPosition.rotation);
             Pizza.transform.parent = GrabPosition;
 
-            StartCoroutine(Cooking(Pizza.GetComponent<Pizza>().cookingTime));
+            Lethimcook = StartCoroutine(Cooking());
+
+            if (Pizza.GetComponent<Pizza>().cooked || Pizza.GetComponent<Pizza>().overCooked)
+            {
+                StopCoroutine(Lethimcook);
+            }
 
             Debug.Log("Pizza dans four");
         }
@@ -46,18 +53,17 @@ public class Oven : MonoBehaviour
         if (other.gameObject.CompareTag("Pizza"))
         {
             isCooking = false;
-            StopCoroutine(Cooking(Pizza.GetComponent<Pizza>().cookingTime));
             Debug.Log("Pizza sortie du four");
         }
     }
 
-    IEnumerator Cooking(int time)
+    IEnumerator Cooking()
     {
         Pizza.GetComponent<Pizza>().unCooked = true;
 
         Led.GetComponent<Renderer>().material.color = Color.Lerp(Color.red, Color.yellow, 0.5f);
 
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(Pizza.GetComponent<Pizza>().cookingTime);
 
         Led.GetComponent<Renderer>().material.color = Color.red;
 

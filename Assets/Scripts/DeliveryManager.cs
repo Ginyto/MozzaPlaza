@@ -37,6 +37,8 @@ public class DeliveryManager : MonoBehaviour
 
             Destroy(Pizza);
 
+            StopAllCoroutines();
+
             RecipeManager.Order();
 
         }
