@@ -12,12 +12,13 @@ public class Pizza : MonoBehaviour
     public bool isMatch = false;
     public int cookingTime = 0;
     private bool done = false;
+    public GameObject PizzaIndicator;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        PizzaIndicator = GameObject.Find("Indicator");
     }
 
     // Update is called once per frame
@@ -80,14 +81,16 @@ public class Pizza : MonoBehaviour
             if (isMatch)
             {
                 Debug.Log("Match");
+                PizzaIndicator.GetComponent<Renderer>().material.color = Color.green;
             }
             else
             {
                 Debug.Log("No Match ingredients are different from recipe");
+                PizzaIndicator.GetComponent<Renderer>().material.color = Color.red;
             }
 
             cookingTime /= 2;
-            done = true;
+            // done = true;
         }
     }
 }

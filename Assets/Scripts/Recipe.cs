@@ -19,6 +19,7 @@ public class Recipe : MonoBehaviour
     public GameObject PizzaPrefab;
     public Transform PizzaSpawn;
     public GameObject Prepa;
+    public int PizzaIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -49,18 +50,19 @@ public class Recipe : MonoBehaviour
 
     public List<GameObject> SelectRandomRecipe()
     {
-        int random = Random.Range(0, Recipes.Count);
-        ScreenOrder(random);
-        return new List<GameObject>(Recipes[random]);
+        PizzaIndex = Random.Range(0, Recipes.Count);
+        ScreenOrder();
+        // Debug.Log("PizzaIndex Recipe : " + PizzaIndex);
+        return new List<GameObject>(Recipes[PizzaIndex]);
     }
 
-    public void ScreenOrder(int index)
+    public void ScreenOrder()
     {
         foreach (GameObject image in RecipeImagesHolder)
         {
             if(image.GetComponent<SpriteRenderer>().sprite == null)
             {
-                image.GetComponent<SpriteRenderer>().sprite = RecipeImages[index];
+                image.GetComponent<SpriteRenderer>().sprite = RecipeImages[PizzaIndex];
                 break;
             }
         }
@@ -74,7 +76,7 @@ public class Recipe : MonoBehaviour
 
         pizza.GetComponent<Pizza>().recipe = SelectRandomRecipe();
 
-        pizza.name = "Pizza " + pizza.GetComponent<Pizza>().recipe[0].name;
+        pizza.name = "Pizza " + RecipeImages[PizzaIndex].name;
 
         pizza.transform.SetParent(Prepa.transform);
 

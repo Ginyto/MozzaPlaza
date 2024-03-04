@@ -5,7 +5,8 @@ using UnityEngine;
 public class PizzaPeel : MonoBehaviour
 {
     public Transform GrabPosition;
-    public bool isGrabbable = true;
+    public bool isPizzaOn = false;
+    public bool hasPizzaLeftOven = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,28 +22,22 @@ public class PizzaPeel : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Peel Collided with " + other.gameObject.name);
+        /*Debug.Log("Peel Collided with " + other.gameObject.name);*/
 
-        if (other.gameObject.CompareTag("Pizza") && isGrabbable)
+        if (other.gameObject.CompareTag("Four") && !isPizzaOn) hasPizzaLeftOven = true;
+        if (other.gameObject.CompareTag("Pizza") && !isPizzaOn)
         {
             other.gameObject.transform.SetPositionAndRotation(
                 GrabPosition.position,
-                new(
-                    other.gameObject.transform.rotation.x,
-                    other.gameObject.transform.rotation.y,
-                    GrabPosition.rotation.z,
-                    Quaternion.identity.w
-                ));
+                GrabPosition.rotation
+                );
 
             AttachIngredients ingScript = other.gameObject.GetComponent<AttachIngredients>();
             ingScript.enabled = false;
 
             other.gameObject.transform.parent = GrabPosition;
 
-            if (other.gameObject.CompareTag("Four"))
-            {
-                isGrabbable = false;
-            }
+            isPizzaOn = true;
         }
     }
 
@@ -50,7 +45,25 @@ public class PizzaPeel : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Four"))
         {
-            isGrabbable = true;
+            isPizzaOn = IsPizzaGosse();
+            Debug.Log(isPizzaOn);
+            StartCoroutine(ChangeLeftOven(false));
         }
+    }
+
+    private IEnumerator ChangeLeftOven(bool value)
+    {
+        yield return new WaitForSeconds(0.5f);
+        hasPizzaLeftOven = value;
+    }
+
+    private bool IsPizzaGosse()
+    {
+        bool isPizzaGosse = false;
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            if (transform.GetChild(i).gameObject.CompareTag("Pizza")) isPizzaGosse = true;
+        }
+        return isPizzaGosse;
     }
 }
